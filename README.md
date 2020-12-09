@@ -1,6 +1,6 @@
 # sscm
 
-> A Vue.js project
+> SSCM前端
 
 ## Build Setup
 
