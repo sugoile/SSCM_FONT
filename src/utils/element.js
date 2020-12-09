@@ -1,0 +1,87 @@
+import Vue from 'vue';
+import {
+  Input,
+  Carousel,
+  CarouselItem,
+  Backtop,
+  Icon,
+  Container,
+  Header,
+  Aside,
+  Main,
+  Badge,
+  Menu,
+  Submenu,
+  MenuItem,
+  MenuItemGroup,
+  Tabs,
+  TabPane,
+  Popover,
+  Button,
+  Message,
+  Card,
+  ButtonGroup,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem,
+  Table,
+  TableColumn,
+  Switch,
+  Pagination,
+  Dialog,
+  Form,
+  FormItem,
+  Checkbox,
+  CheckboxGroup,
+  Tooltip,
+  Tree,
+  Collapse,
+  CollapseItem,
+  Radio,
+  RadioGroup,
+  Select,
+  Option,
+  Cascader,
+} from 'element-ui';
+Vue.use(Input);
+Vue.use(Carousel);
+Vue.use(CarouselItem);
+Vue.use(Backtop);
+Vue.use(Icon);
+Vue.use(Container);
+Vue.use(Header);
+Vue.use(Aside);
+Vue.use(Main);
+Vue.use(Badge);
+Vue.use(Menu);
+Vue.use(Submenu);
+Vue.use(MenuItem);
+Vue.use(MenuItemGroup);
+Vue.use(Tabs);
+Vue.use(TabPane);
+Vue.use(Popover);
+Vue.use(Button);
+Vue.use(Card);
+Vue.use(ButtonGroup);
+Vue.use(Dropdown);
+Vue.use(DropdownMenu);
+Vue.use(DropdownItem);
+Vue.use(Table);
+Vue.use(TableColumn);
+Vue.use(Switch);
+Vue.use(Pagination);
+Vue.use(Dialog);
+Vue.use(Form);
+Vue.use(FormItem);
+Vue.use(Checkbox);
+Vue.use(CheckboxGroup);
+Vue.use(Tooltip);
+Vue.use(Tree);
+Vue.use(Collapse);
+Vue.use(CollapseItem);
+Vue.use(Radio);
+Vue.use(RadioGroup);
+Vue.use(Select);
+Vue.use(Option);
+Vue.use(Cascader);
+Vue.prototype.$message = Message;

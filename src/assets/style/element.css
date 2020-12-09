@@ -1,0 +1,28 @@
+.el-container {
+  background-color: #ebf1f6;
+  height: 100%;
+  width: 100%;
+}
+
+.el-header {
+  padding: 0 !important;
+}
+
+.el-main {
+  color: #333;
+  padding: 0 !important;
+}
+
+.el-badge__content {
+  top: 10px !important;
+  right: 20px !important;
+}
+
+.el-menu-item.is-active {
+  background: hsla(0, 0%, 100%, .5) !important;
+}
+
+
+/* .el-menu-item.is-active i,.el-menu-item.is-active span {
+  color: #2f74ff !important;
+} */
