@@ -2,9 +2,7 @@
   <div class="login">
     <div class="header-wrap">
       <div class="logo-l f-fl">
-        <router-link to="/login">
-          <img src="../../assets/image/sscm_logo.png" />
-        </router-link>
+        <router-link to="/login"></router-link>
       </div>
     </div>
     <div class="bg-wrap">
@@ -16,16 +14,25 @@
         <form class="loginForm">
           <div class="ui-form-item g-mt40">
             <span class="ui-form-txt">用户账号</span>
-            <input class="ui-form-input" placeholder="请输入用户账号" type="text" v-model="username" />
+            <input
+              class="ui-form-input"
+              placeholder="请输入用户账号"
+              type="text"
+              v-model="Submitform.username"
+            />
           </div>
           <div class="ui-form-item g-mt30">
             <span class="ui-form-txt">登录密码</span>
-            <input class="ui-form-input" placeholder="请输入密码" type="password" v-model="password" />
+            <input
+              class="ui-form-input"
+              placeholder="请输入密码"
+              type="password"
+              v-model="Submitform.password"
+            />
           </div>
           <div class="g-mt30">
             <a class="remeberpwd" href="#">忘记密码？</a>
           </div>
-            <router-link class="remeberpwd" to="/UserLogin" style="float:left">切换到学生/老师登录</router-link>
           <div class="ui-form-btn">
             <input class="ui-button login-btn" value="登录" @click="submit" />
           </div>
@@ -37,6 +44,7 @@
 
 <script>
 import { login } from "@/axios/api/Admin";
+import { UserLogin } from "@/axios/api/SORT";
 import { GetMenuList, GetMenuTree } from "@/axios/api/Admin";
 import { setTreeMenus, setListMenus } from "@/store/commit.js";
 import {
@@ -46,20 +54,23 @@ import {
   setActiveIndex,
   setAsideMenu,
 } from "@/store/commit.js";
+const form = {
+  username: '',
+  password: '',
+}
 export default {
   data() {
     return {
-      username: "",
-      password: "",
+      Submitform: Object.assign({}, form),
     };
   },
   methods: {
     async submit() {
       if (
-        this.username === "" ||
-        this.username === null ||
-        this.password === "" ||
-        this.password === null
+        this.Submitform.username === "" ||
+        this.Submitform.username === null ||
+        this.Submitform.password === "" ||
+        this.Submitform.password === null
       ) {
         this.$message.error({
           message:
@@ -67,45 +78,24 @@ export default {
           dangerouslyUseHTMLString: true,
         });
       } else {
-        await login(this.username, this.password).then((res) => {
+        await UserLogin(this.Submitform).then((res) => {
           if (res.data.code == 200) {
-            console.log(res);
             window.sessionStorage.clear();
-            setAsideIndex(this, ["/index"]);
-            setLeftIndex(this, ["/index"]);
-            setAsideMenu(this, []);
-            setTabs(this, [{
-              title: "首页",
-              path: "/index",
-            }]);
-            setActiveIndex(this, "/index");
-            setTreeMenus(this, []);
-            setTreeMenus(this, []);
-            window.sessionStorage.setItem("ID", res.data.data.ID);
-            window.sessionStorage.setItem(
-              "Authorities",
-              res.data.data.Authorities
-            );
-            window.sessionStorage.setItem("username", res.data.data.Username);
-            window.sessionStorage.setItem("nickname", res.data.data.nickName);
-            window.sessionStorage.setItem("token", res.data.data.token);
-
-            GetMenuTree({ username: res.data.data.Username }).then((res) => {
-              if (res.data.code == 200) {
-                setTreeMenus(this, res.data.data);
-                window.sessionStorage.setItem("TreeMenus", JSON.stringify(res.data.data));
-              }
-            });
-
-            GetMenuList({ username: res.data.data.Username }).then((res) => {
-              if (res.data.code == 200) {
-                setListMenus(this, res.data.data);
-                window.sessionStorage.setItem("ListMenus", JSON.stringify(res.data.data));
-              }
-            });
-
-            this.$message.success(res.data.data.nickName + "登录成功");
-            this.$router.push("/index");
+            window.sessionStorage.setItem("id", res.data.data.RandID.id);
+            window.sessionStorage.setItem("username", res.data.data.sortLogin.username);
+            window.sessionStorage.setItem("type", res.data.data.RandID.type);
+            if (res.data.data.RandID.type === 0) {
+              this.$message.success(res.data.data.sortLogin.username + "登录成功");
+              this.$router.push("/students");
+            } else if (res.data.data.RandID.type === 1) {
+              this.$message.success(res.data.data.sortLogin.username + "登录成功");
+              this.$router.push("/teachers");
+            } else {
+              this.$message.error({
+                message: "<strong>" + "发生了一些错误了也..." + "~</strong>",
+                dangerouslyUseHTMLString: true,
+              });
+            }
           } else {
             this.$message.error({
               message: "<strong>" + res.data.message + "~</strong>",

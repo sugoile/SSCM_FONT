@@ -7,3 +7,11 @@ export function GetDepartment(params) {
         params: params
     })
 }
+
+export function GetDepartmentNoSelect() {
+    return request({
+        url: '/department/getDepartmentNoSelect',
+        method: 'get',
+    })
+}
+

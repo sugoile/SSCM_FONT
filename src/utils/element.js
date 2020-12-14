@@ -42,6 +42,8 @@ import {
   Select,
   Option,
   Cascader,
+  Row,
+  Col,
 } from 'element-ui';
 Vue.use(Input);
 Vue.use(Carousel);
@@ -84,4 +86,6 @@ Vue.use(RadioGroup);
 Vue.use(Select);
 Vue.use(Option);
 Vue.use(Cascader);
+Vue.use(Row);
+Vue.use(Col);
 Vue.prototype.$message = Message;

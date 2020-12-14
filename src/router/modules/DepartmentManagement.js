@@ -8,13 +8,15 @@ export default {
   children: [{
       path: 'departments',
       name: 'DepartmentsManagement',
+      meta: {type: 'administrators'},
       component: () => import("@/views/department/departments")
     },
     {
       path: 'departmentsInformation',
       name: 'DepartmentsInformationManagement',
-      component: () => import("@/views/department/departmentsInformation")
-    }
+      meta: {type: 'administrators'},
+      component: () => import("@/views/department/departmentsInformation"),
+    },
   ]
 
 }

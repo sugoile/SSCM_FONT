@@ -50,9 +50,9 @@
           <el-table-column label="所属机构">
             <template slot-scope="scope">{{ scope.row.institution.name }}</template>
           </el-table-column>
-          <el-table-column label="人员信息" >
+          <el-table-column label="人员信息">
             <template slot-scope="scope">
-              <el-button type="text">查看相关工作人员</el-button>
+              <el-button type="text" @click="StaffView(scope.row)">查看相关工作人员</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -68,11 +68,18 @@
         </div>
       </div>
     </el-card>
+
+    <StaffDialog
+      :dialogVisible="staffDialog"
+      :Department="Department"
+      @reset="Reset"
+    ></StaffDialog>
   </div>
 </template>
 
 <script>
-import { GetDepartment, } from "@/axios/api/Department"
+import { GetDepartment, } from "@/axios/api/Department";
+import StaffDialog from "./staffDialog";
 const QueryParam = {
   query: null,
   pageSize: 8,
@@ -95,7 +102,12 @@ export default {
       queryParam: Object.assign({}, QueryParam),
       paginationParam: Object.assign({}, PaginationParam),
       query: "",
+      staffDialog: false,
+      Department: {},
     }
+  },
+  components: {
+    StaffDialog,
   },
   methods: {
     async Refresh() {
@@ -126,6 +138,14 @@ export default {
     },
     handleCurrentChange(val) {
       this.queryParam.pageNum = val;
+      this.Refresh();
+    },
+    StaffView(item) {
+      this.staffDialog = true;
+      this.Department = item;
+    },
+    Reset() {
+      this.staffDialog = false;
       this.Refresh();
     },
   }

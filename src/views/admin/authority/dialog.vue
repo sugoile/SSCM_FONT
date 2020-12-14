@@ -36,7 +36,6 @@
           :options="ParentApis"
           :props="optionProps"
           v-model="selectedParentApi"
-          :disabled="operation === 'PEDIT'"
         ></el-cascader>
       </el-form-item>
       <el-form-item label="描述信息">
