@@ -90,7 +90,7 @@ export default {
     border-radius: 5px;
     border-top: none;
     background: #fff;
-    padding: 15px 15px 5px 15px;
+    padding: 15px 15px 0px 15px;
   }
 }
 .el-tabs__item {

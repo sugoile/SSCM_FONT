@@ -273,7 +273,7 @@ export default {
         );
       } else {
         //删除id
-        await DelStudentOne({ id: this.DelOneId, }).then((res) => {
+        await DelStudentOne(this.DelOneId).then((res) => {
           if (res.data.code == 200) {
             this.$message.success({
               message: "<strong>" + res.data.message + "~</strong>",
