@@ -540,7 +540,7 @@ export default {
   .pagination {
     float: right;
     display: block;
-    margin: 10px 0;
+    margin: 10px 10px 6px 10px;
   }
 }
 /deep/ .el-table td,

@@ -205,7 +205,7 @@ export default {
                 dangerouslyUseHTMLString: true,
               });
               this.Refresh();
-              this.getChooseCourceByCID(this.courseID);
+              this.getChooseCourceByCID(this.courseID, this.courseName);
             }
             else {
               this.$message.error({
@@ -213,7 +213,7 @@ export default {
                 dangerouslyUseHTMLString: true,
               });
               this.Refresh();
-              this.getChooseCourceByCID(this.courseID);
+              this.getChooseCourceByCID(this.courseID, this.courseName);
             }
           })
         }

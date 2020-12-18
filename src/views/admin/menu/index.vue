@@ -71,7 +71,6 @@ export default {
 
 <style lang="less" scoped>
 .collapse {
-  margin: 5px;
   margin-bottom: 10px;
 }
 .fontName {

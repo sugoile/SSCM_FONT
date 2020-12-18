@@ -228,7 +228,7 @@ export default {
   .pagination {
     float: right;
     display: block;
-    margin: 10px 0;
+    margin: 10px 10px 6px 10px;
   }
 }
 /deep/ .el-table td,
@@ -236,5 +236,9 @@ export default {
   text-align: center;
   padding-top: 6px;
   padding-bottom: 5.5px;
+}
+/deep/ .el-dialog__footer {
+  margin-top: 10px;
+  text-align: center;
 }
 </style>
